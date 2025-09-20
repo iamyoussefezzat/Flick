@@ -3,8 +3,11 @@ import { ENV } from './config/env.js';
 import { connectDB } from './config/db.js';
 import cors from 'cors';  
 import {clerkMiddleware} from '@clerk/express';
+
+  // routes////
 import userRoutes from './routes/user.routes.js';
 import postRoutes from './routes/post.routes.js';
+import commentRoutes from './routes/comment.route.js';
 
     const app = express();
     app.use(cors());
@@ -18,6 +21,13 @@ import postRoutes from './routes/post.routes.js';
 
     app.use('/api/users', userRoutes);
     app.use('api/posts', postRoutes);
+    app.use('api/comments', commentRoutes);
+
+      //error handling middleware
+      app.use((err,req,res, next )=>{
+        console.error(" unhandled error ".err);
+        res.status(500).json({error:err.message || "Internal server error"});
+      }); 
 
     const startServer = async () => {
       try {
