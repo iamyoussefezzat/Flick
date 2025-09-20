@@ -24,8 +24,8 @@ import commentRoutes from './routes/comment.route.js';
     app.use('/api/comments', commentRoutes);
       //error handling middleware
       app.use((err,req,res, next )=>{
-        console.error(" unhandled error ".err);
-        res.status(500).json({error:err.message || "Internal server error"});
+        console.error(" unhandled error ", err);     
+           res.status(500).json({error:err.message || "Internal server error"});
       }); 
 
     const startServer = async () => {
