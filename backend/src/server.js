@@ -8,6 +8,7 @@ import {clerkMiddleware} from '@clerk/express';
 import userRoutes from './routes/user.routes.js';
 import postRoutes from './routes/post.routes.js';
 import commentRoutes from './routes/comment.route.js';
+import NotificationRoutes from './routes/notifications.routes.js';
 
     const app = express();
     app.use(cors());
@@ -22,6 +23,8 @@ import commentRoutes from './routes/comment.route.js';
     app.use('/api/users', userRoutes);
     app.use('/api/posts', postRoutes);
     app.use('/api/comments', commentRoutes);
+    app.use('/api/notifications', NotificationRoutes);
+
       //error handling middleware
       app.use((err, req, res, next) => {
         console.error("Unhandled error:", err);
