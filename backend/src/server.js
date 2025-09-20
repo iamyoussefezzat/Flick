@@ -3,6 +3,7 @@ import { ENV } from './config/env.js';
 import { connectDB } from './config/db.js';
 import cors from 'cors';  
 import {clerkMiddleware} from '@clerk/express';
+import { arcjetMiddleware } from './middlewares/arcjet.middleware.js';
 
   // routes////
 import userRoutes from './routes/user.routes.js';
@@ -14,6 +15,7 @@ import NotificationRoutes from './routes/notifications.routes.js';
     app.use(cors());
     app.use(express.json());
     app.use(clerkMiddleware());
+    app.use(arcjetMiddleware);
 
 
     app.get('/', (req, res) => {
