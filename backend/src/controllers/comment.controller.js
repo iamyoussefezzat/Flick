@@ -27,16 +27,16 @@ export const createComment = asyncHandler(async (req, res) => {
     }
 
     const post = await Post.findById(postId);
-    const user = await User.findById(userId);
-    if (!post || !user) 
+    const user = await User.findOne({ clerkId: userId });  
+      if (!post || !user) 
      return res.status(404).json({message: 'Post or User not found'});
 
     // Create notification for post owner if the commenter is not the post owner
     const comment = await Comment.create({
         content,
         post: postId,
-        user: user._Id,
-    });
+        user: user._id,  
+      });
 
     //link comment to post
     await Post.findByIdAndUpdate(postId, {
@@ -44,8 +44,8 @@ export const createComment = asyncHandler(async (req, res) => {
     });
 
     //create notification if the commenter is not the post owner
-    if (post.user.toString() !== userId.toString()) {
-        await Notification.create({
+    if (post.user.toString() !== user._id.toString()) {    
+            await Notification.create({
             from: user._id,
             to: post.user,
             type: 'comment',

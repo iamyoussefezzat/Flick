@@ -20,9 +20,8 @@ import commentRoutes from './routes/comment.route.js';
     });
 
     app.use('/api/users', userRoutes);
-    app.use('api/posts', postRoutes);
-    app.use('api/comments', commentRoutes);
-
+    app.use('/api/posts', postRoutes);
+    app.use('/api/comments', commentRoutes);
       //error handling middleware
       app.use((err,req,res, next )=>{
         console.error(" unhandled error ".err);
