@@ -4,6 +4,7 @@ import { connectDB } from './config/db.js';
 import cors from 'cors';  
 import {clerkMiddleware} from '@clerk/express';
 import userRoutes from './routes/user.routes.js';
+import postRoutes from './routes/post.routes.js';
 
     const app = express();
     app.use(cors());
@@ -16,6 +17,7 @@ import userRoutes from './routes/user.routes.js';
     });
 
     app.use('/api/users', userRoutes);
+    app.use('api/posts', postRoutes);
 
     const startServer = async () => {
       try {
