@@ -49,4 +49,4 @@ import NotificationRoutes from './routes/notifications.routes.js';
     
     startServer();
     
-  
+  export default app;
