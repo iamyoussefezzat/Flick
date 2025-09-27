@@ -8,6 +8,13 @@ const TRENDING_TOPICS = [
   { topic: "#WebDevelopment", tweets: "234K" },
   { topic: "#AI", tweets: "567K" },
   { topic: "#TechNews", tweets: "98K" },
+  { topic: "#AI News", tweets: "98K" },
+  { topic: "#ReactNative", tweets: "125K" },
+  { topic: "#TypeScript", tweets: "89K" },
+  { topic: "#WebDevelopment", tweets: "234K" },
+  { topic: "#AI", tweets: "567K" },
+  { topic: "#TechNews", tweets: "98K" },
+  { topic: "#AI News", tweets: "98K" },
 ];
 
 const SearchScreen = () => {
@@ -30,18 +37,12 @@ const SearchScreen = () => {
           <Text className="text-xl font-bold text-gray-900 mb-4">Trending for you</Text>
           {TRENDING_TOPICS.map((item, index) => (
             <TouchableOpacity key={index} className="py-3 border-b border-gray-100">
+
               <Text className="text-gray-500 text-sm">Trending in Technology</Text>
-              <Text className="font-bold text-gray-900 text-lg">{item.topic}</Text>
-              <Text className="text-gray-500 text-sm">{item.tweets} Tweets</Text>
-              <Text className="text-gray-500 text-sm">Trending in Technology</Text>
-              <Text className="font-bold text-gray-900 text-lg">{item.topic}</Text>
-              <Text className="text-gray-500 text-sm">{item.tweets} Tweets</Text>
-              <Text className="text-gray-500 text-sm">Trending in Technology</Text>
-              <Text className="font-bold text-gray-900 text-lg">{item.topic}</Text>
-              <Text className="text-gray-500 text-sm">{item.tweets} Tweets</Text>
-              <Text className="text-gray-500 text-sm">Trending in Technology</Text>
-              <Text className="font-bold text-gray-900 text-lg">{item.topic}</Text>
-              <Text className="text-gray-500 text-sm">{item.tweets} Tweets</Text>
+
+                      <Text className="font-bold text-gray-900 text-lg">{item.topic}</Text>
+                      <Text className="text-gray-500 text-sm">{item.tweets} Tweets</Text>
+             
             </TouchableOpacity>
           ))}
         </View>
