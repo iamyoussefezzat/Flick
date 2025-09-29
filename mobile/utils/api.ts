@@ -40,3 +40,8 @@ export const postApi = {
     deletePost: (api: AxiosInstance, postId: string) => api.delete(`/posts/${postId}`),
   };
   
+  
+export const commentApi = {
+    createComment: (api: AxiosInstance, postId: string, content: string) =>
+      api.post(`/comments/post/${postId}`, { content }),
+  };
