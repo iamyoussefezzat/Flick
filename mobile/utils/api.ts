@@ -1,7 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import { useAuth } from "@clerk/clerk-expo";
+import Constants from 'expo-constants';
 
-const API_BASE_URL = "https://flick-umber.vercel.app/api" ;
+const API_BASE_URL = "http://localhost:5003/api" ;
 // ! 🔥 localhost api would not work on your actual physical device
 // const API_BASE_URL = "http://localhost:5001/api";
 
@@ -12,6 +13,7 @@ export const createApiClient = (getToken: () => Promise<string | null>): AxiosIn
   api.interceptors.request.use(async (config) => {
     const token = await getToken();
     if (token) {
+      console.log("🔑 TOKEN:", token);
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
