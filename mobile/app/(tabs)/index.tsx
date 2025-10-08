@@ -9,7 +9,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className='flex-1'>
-      <Text>Home Screen</Text>
+      <Text>Home Sc sdfreen</Text>
       <SignOutBtn/>
     </SafeAreaView>
   )
