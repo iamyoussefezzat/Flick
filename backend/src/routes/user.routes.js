@@ -1,29 +1,22 @@
-import express from 'express';
-import {protectRoute} from '../middlewares/auth.middleware.js';
-import {getUserProfile,
-        syncUser , 
-        getCurrentUser ,
-        updateUserProfile,
-        followUser
-    } from '../controllers/user.controller.js';
+import express from "express";
+import {
+  followUser,
+  getCurrentUser,
+  getUserProfile,
+  syncUser,
+  updateUserProfile
+} from "../controllers/user.controller.js";
+import { protectRoute } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-    router.get('/profile/:username', getUserProfile); 
+// public route
+router.get("/profile/:username", getUserProfile);
 
-    router.post("/sync",  (req, res) => {
-        console.log("🧩 Clerk Auth Info:", req.auth);
-        if (!req.auth?.userId) {
-          return res.status(403).json({ message: "No valid user" });
-        }
-        res.json({ ok: true, userId: req.auth.userId });
-      });
-    
-    router.post('/me', protectRoute, getCurrentUser);
-
-    //update
-    router.put('/profile', protectRoute, updateUserProfile); 
-    //follow
-    router.post('/follow/:targetUserId', protectRoute, followUser);
+// protected routes
+router.post("/sync", protectRoute, syncUser);
+router.get("/me", protectRoute, getCurrentUser);
+router.put("/profile", protectRoute,updateUserProfile);
+router.post("/follow/:targetUserId", protectRoute, followUser);
 
 export default router;

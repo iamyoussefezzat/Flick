@@ -31,6 +31,9 @@ export const userApi = {
   syncUser: (api: AxiosInstance) => api.post("/users/sync"),
   getCurrentUser: (api: AxiosInstance) => api.get("/users/me"),
   updateProfile: (api: AxiosInstance, data: any) => api.put("/users/profile", data),
+  onerror: (error: any) => {
+    console.error("API Error:",);
+  }
 };
 
 export const postApi = {

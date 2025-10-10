@@ -4,6 +4,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { RefreshControl, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PostComposer from "@/components/PostComposer";
+import PostsList from "@/components/PostList";
 const HomeScreen = () => {
   
   useUserSync()
@@ -14,8 +16,16 @@ const HomeScreen = () => {
         <Ionicons name="logo-twitter" size={24} color="#1DA1F2" />
         <Text className="text-xl font-bold text-gray-900">Home</Text>
       
-      </View>
       <SignOutBtn/>
+      </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            className="flex-1"
+            contentContainerStyle={{ paddingBottom: 80 }}
+          >
+            <PostComposer />
+            <PostsList />
+          </ScrollView>
     </SafeAreaView>
   )
 }
