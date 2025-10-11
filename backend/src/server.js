@@ -2,14 +2,14 @@ import express from "express";
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
 
-import userRoutes from "./routes/user.route.js";
-import postRoutes from "./routes/post.route.js";
+import userRoutes from "./routes/user.routes.js";
+import postRoutes from "./routes/post.routes.js";
 import commentRoutes from "./routes/comment.route.js";
-import notificationRoutes from "./routes/notification.route.js";
+import notificationRoutes from "./routes/notifications.routes.js";
 
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
-import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
+import { arcjetMiddleware } from "./middlewares/arcjet.middleware.js";
 
 const app = express();
 

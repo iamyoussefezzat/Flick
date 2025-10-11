@@ -13,7 +13,6 @@ export const createApiClient = (getToken: () => Promise<string | null>): AxiosIn
   api.interceptors.request.use(async (config) => {
     const token = await getToken();
     if (token) {
-      console.log("🔑 TOKEN:", token);
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -32,7 +31,7 @@ export const userApi = {
   getCurrentUser: (api: AxiosInstance) => api.get("/users/me"),
   updateProfile: (api: AxiosInstance, data: any) => api.put("/users/profile", data),
   onerror: (error: any) => {
-    console.error("API Error:",);
+    console.error("API Error: userAPI",);
   }
 };
 
