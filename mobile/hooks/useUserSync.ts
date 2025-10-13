@@ -10,7 +10,7 @@ export const useUserSync = () => {
   const syncUserMutation = useMutation({
     mutationFn: () => userApi.syncUser(api),
     onSuccess: (response: any) => console.log("User synced successfully:", response.data.user),
-    onError: (error) => console.error("User sync failed: error", error),
+    onError: (error) => console.error("User sync failed:", error),
   });
 
   // auto-sync user when signed in
@@ -18,7 +18,6 @@ export const useUserSync = () => {
     // if user is signed in and user is not synced yet, sync user
     if (isSignedIn && !syncUserMutation.data) {
       syncUserMutation.mutate();
-      console.log("Syncing user successfully...");
     }
   }, [isSignedIn]);
 
