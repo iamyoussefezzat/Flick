@@ -1,4 +1,5 @@
 import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
+import CommentsModel from './CommentsModel'
 import React from 'react'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { useState } from 'react'
@@ -59,7 +60,7 @@ const PostList = () => {
         />
       ))}
 
-     
+     <CommentsModel selectedPost={selectedPost} onClose={() => setSelectedPostId(null)} />
     </>
   )
 }
