@@ -8,7 +8,7 @@ export const getUserProfile =  asyncHandler(async (req, res) => {
     const { username } = req.params;
     const user = await User.findOne({username});
     if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: 'User not found in DB' });
     }   
     res.status(200).json({user});
 });
