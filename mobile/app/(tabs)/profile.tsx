@@ -1,7 +1,9 @@
+import EditProfileModal from '@/components/EditProfileModal';
 import PostsList from '@/components/PostList';
 import SignOutButton from '@/components/SignOutBtn';
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { usePosts } from '@/hooks/usePosts';
+import { useProfile } from '@/hooks/useProfile';
 import { Feather } from '@expo/vector-icons';
 import { format } from 'date-fns';
 import { View, Text, ActivityIndicator, ScrollView, RefreshControl, Image, TouchableOpacity } from 'react-native'
@@ -18,6 +20,18 @@ const profileScreens = () => {
       refetch: refetchPosts,
       isLoading: isRefetching,
     } = usePosts(currentUser?.username);
+
+    const {
+      isEditModalVisible,
+      openEditModal,
+      closeEditModal,
+      formData,
+      saveProfile,
+      updateFormField,
+      isUpdating,
+      refetch: refetchProfile,
+    } = useProfile();
+  
 
     if (isLoading) {
         return (
@@ -43,16 +57,16 @@ const profileScreens = () => {
         className="flex-1"
         contentContainerStyle={{ paddingBottom: 100 + insets.bottom }}
         showsVerticalScrollIndicator={false}
-        // refreshControl={
-        //   <RefreshControl
-        //     refreshing={isRefetching}
-        //     onRefresh={() => {
-        //       refetchProfile();
-        //       refetchPosts();
-        //     }}
-        //     tintColor="#1DA1F2"
-        //   />
-        // }
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={() => {
+              refetchProfile();
+              refetchPosts();
+            }}
+            tintColor="#1DA1F2"
+          />
+        }
       >
         <Image
           source={{
@@ -73,7 +87,7 @@ const profileScreens = () => {
                     />
                   <TouchableOpacity
                     className="border border-gray-300 px-6 py-2 rounded-full"
-                    // onPress={openEditModal}
+                    onPress={openEditModal}
                   >
                         <Text className="font-semibold text-gray-900">Edit profile</Text>
                    </TouchableOpacity>
@@ -125,7 +139,15 @@ const profileScreens = () => {
       </ScrollView>
 
 
-      
+          
+      <EditProfileModal
+        isVisible={isEditModalVisible}
+        onClose={closeEditModal}
+        formData={formData}
+        saveProfile={saveProfile}
+        updateFormField={updateFormField}
+        isUpdating={isUpdating}
+      />
     </SafeAreaView>
   )
 }
