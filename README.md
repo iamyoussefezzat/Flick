@@ -4,12 +4,11 @@
 
 ## 🎯 What You'll Build
 
-This is more than just a UI tutorial — it's a **full-stack mobile development** guide.
+ it's a **full-stack mobile development** .
 
 ✅ Built with your existing **React knowledge**  
 ✅ Runs on both **Android & iOS**  
 ✅ No Swift, Kotlin, or other languages needed  
-✅ Build the whole project in **under 7 hours**
 
 ---
 
